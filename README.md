@@ -1,2 +1,1 @@
 # smaple-ci
-# smaple-ci
