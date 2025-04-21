@@ -39,12 +39,15 @@ jobs:
 
       # Step 5: Build and push Docker image
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .                  # Uses current directory as build context
-          push: true                  # Pushes the image after building
-          tags: |                     # Specifies image tags
-            ${REGISTRY}/${IMAGE_NAME}:${GITHUB_RUN_ID}     
-            ${REGISTRY}/${IMAGE_NAME}:latest               
-          cache-from: type=gha    #    Uses GitHub Actions build cache for faster builds
-          cache-to: type=gha,mode=max
+        # uses: docker/build-push-action@v5
+        # with:
+        #   context: .                  # Uses current directory as build context
+        #   push: true                  # Pushes the image after building
+        #   tags: |                     # Specifies image tags
+        #     ${REGISTRY}/${IMAGE_NAME}:${GITHUB_RUN_ID}     
+        #     ${REGISTRY}/${IMAGE_NAME}:latest               
+        #   cache-from: type=gha    #    Uses GitHub Actions build cache for faster builds
+        #   cache-to: type=gha,mode=max
+        run: |
+          docker build -t ${REGISTRY}/${IMAGE_NAME}:${GITHUB_RUN_ID} .
+          # docker push ${{ secrets.ACR_NAME }}.azurecr.io/myapp:latest
