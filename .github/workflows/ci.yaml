@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest    # Uses Ubuntu as the build environment
+    runs-on: meet-laptop    # Uses Ubuntu as the build environment
     permissions:
       contents: read          # Permission to read repository contents
       packages: write         # Permission to write packages (Docker images)
