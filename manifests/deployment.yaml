@@ -15,13 +15,15 @@ spec:
         app: web
       annotations:
         # Vault annotations for injecting secrets
+
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "web-role"
-        vault.hashicorp.com/agent-inject-secret-DATABASE_NAME: "kv/data/DATABASE_NAME"
+        vault.hashicorp.com/agent-inject-secret-DATABASE_NAME: "kv/data/Kubernetes/Postgres-Database"
         vault.hashicorp.com/agent-inject-template-DATABASE_NAME: |
-          {{- with secret "kv/data/DATABASE_NAME" -}}
-          export DATABASE_NAME="{{ .Data.data.value }}"
-          {{- end }
+          {{- with secret "kv/data/Kubernetes/Postgres-Database" -}}
+          export DATABASE_NAME="{{ .Data.data.DATABASE_NAME }}"
+          {{- end }}
+
         #
     spec:
       serviceAccountName: web-app
