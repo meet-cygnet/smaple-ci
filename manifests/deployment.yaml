@@ -26,7 +26,7 @@ spec:
 
         #
     spec:
-      serviceAccountName: web-app
+      serviceAccountName: web-sa
       containers:
       - name: web-container
         image: nginx:stable-alpine
