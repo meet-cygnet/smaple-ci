@@ -47,10 +47,10 @@ jobs:
       packages: write
 
     steps:
-      - name: Set up REGISTRY and ENV vars
-        run: |
-          echo "REGISTRY=${{ secrets.ACR_NAME }}.azurecr.io" >> $GITHUB_ENV
-          echo "ENVIRONMENT=${{ github.event.inputs.environment || github.ref_name }}" >> $GITHUB_ENV
+      # - name: Set up REGISTRY and ENV vars
+      #   run: |
+      #     echo "REGISTRY=${{ secrets.ACR_NAME }}.azurecr.io" >> $GITHUB_ENV
+      #     echo "ENVIRONMENT=${{ github.event.inputs.environment || github.ref_name }}" >> $GITHUB_ENV
 
       - name: Checkout repository
         uses: actions/checkout@v4
