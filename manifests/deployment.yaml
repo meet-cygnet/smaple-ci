@@ -45,6 +45,7 @@ spec:
             port: 80
           initialDelaySeconds: 10
           periodSeconds: 30
+
       #   volumeMounts:
       #   - name: html-volume
       #     mountPath: /usr/share/nginx/html

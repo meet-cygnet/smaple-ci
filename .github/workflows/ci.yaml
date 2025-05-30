@@ -76,6 +76,8 @@ jobs:
       #       ${REGISTRY}/${IMAGE_NAME}:latest
       #     cache-from: type=gha
       #     cache-to: type=gha,mode=max
+        # run: |
+        #   docker build -t ${REGISTRY}/${IMAGE_NAME}:${inputs.environment}-${GITHUB_RUN_NUMBER} .
+        #   # docker push ${{ secrets.ACR_NAME }}.azurecr.io/myapp:latest
         run: |
           docker build -t ${REGISTRY}/${IMAGE_NAME}:${inputs.environment}-${GITHUB_RUN_NUMBER} .
-          # docker push ${{ secrets.ACR_NAME }}.azurecr.io/myapp:latest
