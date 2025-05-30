@@ -80,4 +80,5 @@ jobs:
         #   docker build -t ${REGISTRY}/${IMAGE_NAME}:${inputs.environment}-${GITHUB_RUN_NUMBER} .
         #   # docker push ${{ secrets.ACR_NAME }}.azurecr.io/myapp:latest
         run: |
-          docker build -t ${REGISTRY}/${IMAGE_NAME}:${inputs.environment}-${GITHUB_RUN_NUMBER} .
+          docker build -t ${REGISTRY}/${IMAGE_NAME}:dev-${GITHUB_RUN_NUMBER} .
+
