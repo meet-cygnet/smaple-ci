@@ -1,0 +1,25 @@
+name: deploy-to-uat
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download Tag Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: image-tag
+
+    - name: Read Tag
+      id: read_tag
+      run: |
+        TAG=$(cat image_tag.txt)
+        echo "Using image tag: $TAG"
+        echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl set image deployment/my-app my-app=ghcr.io/your-org/your-image:${{ steps.read_tag.outputs.tag }}
